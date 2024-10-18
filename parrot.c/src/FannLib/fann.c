@@ -886,7 +886,7 @@ FANN_EXTERNAL void FANN_API fann_print_connections(struct fann *ann)
 					neurons[ann->connections[i] - ann->first_layer->first_neuron] = (char)('A' + value);
 				}
 			}
-			printf("L %3d / N %4d %s\n", layer_it - ann->first_layer,
+			printf("L %3ld / N %4ld %s\n", layer_it - ann->first_layer,
 				   neuron_it - ann->first_layer->first_neuron, neurons);
 		}
 	}
@@ -987,12 +987,12 @@ FANN_EXTERNAL void FANN_API fann_print_parameters(struct fann *ann)
 	{
 		if(ann->network_type == FANN_NETTYPE_SHORTCUT)
 		{
-			printf("  Hidden layer                       :%4d neurons, 0 bias\n",
+			printf("  Hidden layer                       :%4ld neurons, 0 bias\n",
 				   layer_it->last_neuron - layer_it->first_neuron);
 		}
 		else
 		{
-			printf("  Hidden layer                       :%4d neurons, 1 bias\n",
+			printf("  Hidden layer                       :%4ld neurons, 1 bias\n",
 				   layer_it->last_neuron - layer_it->first_neuron - 1);
 		}
 	}
@@ -1540,7 +1540,11 @@ void fann_seed_rand()
 	}
 	else
 	{
-		fread(&foo, sizeof(foo), 1, fp);
+		// fread(&foo, sizeof(foo), 1, fp);
+		if(fread(&foo, sizeof(foo), 1, fp) != 1) {
+			// Handle the error, such as logging or returning an error code
+			fprintf(stderr, "Error reading from file\n");
+		}
 		fclose(fp);
 	}
 	srand(foo);
