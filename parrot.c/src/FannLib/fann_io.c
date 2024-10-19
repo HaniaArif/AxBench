@@ -174,7 +174,7 @@ int fann_save_internal_fd(struct fann *ann, FILE * conf, const char *configurati
 #endif
 
 	/* Save network parameters */
-	fprintf(conf, "num_layers=%u\n", ann->last_layer - ann->first_layer);
+	fprintf(conf, "num_layers=%lu\n", ann->last_layer - ann->first_layer);
 	fprintf(conf, "learning_rate=%f\n", ann->learning_rate);
 	fprintf(conf, "connection_rate=%f\n", ann->connection_rate);
 	fprintf(conf, "network_type=%u\n", ann->network_type);
@@ -236,7 +236,7 @@ int fann_save_internal_fd(struct fann *ann, FILE * conf, const char *configurati
 	for(layer_it = ann->first_layer; layer_it != ann->last_layer; layer_it++)
 	{
 		/* the number of neurons in the layers (in the last layer, there is always one too many neurons, because of an unused bias) */
-		fprintf(conf, "%u ", layer_it->last_neuron - layer_it->first_neuron);
+		fprintf(conf, "%lu ", layer_it->last_neuron - layer_it->first_neuron);
 	}
 	fprintf(conf, "\n");
 
@@ -316,14 +316,14 @@ int fann_save_internal_fd(struct fann *ann, FILE * conf, const char *configurati
 		if(save_as_fixed)
 		{
 			/* save the connection "(source weight) " */
-			fprintf(conf, "(%u, %d) ",
+			fprintf(conf, "(%lu, %d) ",
 					connected_neurons[i] - first_neuron,
 					(int) floor((weights[i] * fixed_multiplier) + 0.5));
 		}
 		else
 		{
 			/* save the connection "(source weight) " */
-			fprintf(conf, "(%u, " FANNPRINTF ") ", connected_neurons[i] - first_neuron, weights[i]);
+			fprintf(conf, "(%lu, " FANNPRINTF ") ", connected_neurons[i] - first_neuron, weights[i]);
 		}
 #else
 		/* save the connection "(source weight) " */
