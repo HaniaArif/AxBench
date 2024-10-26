@@ -1,4 +1,4 @@
-BASE_DIR    := /home/bradley/Projects/axbench
+BASE_DIR    := /content/AxBench
 FANN_INC	:= /usr/local/include
 FANN_LIB	:= /usr/local/lib
 PARROT_LIB  := $(BASE_DIR)/parrot.c/src/ParrotLib
