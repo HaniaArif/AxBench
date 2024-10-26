@@ -7,6 +7,7 @@ import os
 import json
 import sys
 import subprocess
+print('inside train.py')
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
