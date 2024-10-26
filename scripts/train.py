@@ -40,7 +40,7 @@ def main():
 	
 	with open(fName + ".json") as data_file:
 	    data = json.load(data_file)
-
+	
 	learning_rate 			= float(data["learning_rate"])
 	epochs       		 	= int(data["epoch_number"])
 	sampling_rate 			= float(data["sampling_rate"])
@@ -48,13 +48,18 @@ def main():
 	max_layer     			= int(data["max_layer_num"])
 	max_neurons   			= int(data["max_neuron_num_per_layer"])
 
+	print('here 1')
 	# extract the size of training
 	trainPercent = sampling_rate * test_data_fraction
 	lines     = open("train.data/output/fann.data/aggregated.fann").readlines()
 	totalSize = int(lines[0].rstrip().split(" ")[0])
+	print('here 2')
 	print(sys.stderr, "---------------------------------------------------------",)
+	print('here 3')
 	print(sys.stderr, bcolors.UNDERLINE + "\n# Training Size: %d" % (totalSize * sampling_rate * (1 - test_data_fraction)) + bcolors.ENDC)
+	print('here 4')
 	print(sys.stderr, "---------------------------------------------------------")
+	print('here 5')
 
 	bashCommand = "bash ../../scripts/run_training.sh %s %s %s 2 %s %s %s %s %s %s" % (fName, numIn, numOut, max_neurons, max_layer, sampling_rate,test_data_fraction, learning_rate, epochs)
 	print(bashCommand)
