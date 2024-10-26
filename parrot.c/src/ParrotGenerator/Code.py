@@ -34,7 +34,7 @@ class Code(object):
     def toCpp(self, path, nn, targetConfig, vectorMode):
         try: f = open(path, 'w')
         except:
-            print 'Error: Oops! Cannot open ' + path + '!'
+            print('Error: Oops! Cannot open ' + path + '!')
             return False
         pass
 

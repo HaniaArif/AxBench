@@ -19,7 +19,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 def printUsage():
-	print "python comm_to_json.py <func name>"
+	print("python comm_to_json.py <func name>")
 	exit(1)
 
 def main():
@@ -32,7 +32,7 @@ def main():
 	#max n of neurons per layer
 	
 	args = []
-	print "------------------ Compiler Parameters ------------------"
+	print("------------------ Compiler Parameters ------------------")
 	args.append(raw_input(bcolors.OKBLUE + "Learning rate [0.1-1.0]: " + bcolors.ENDC))
 	args.append(raw_input(bcolors.OKBLUE + "Epoch number [1-10000]: "+ bcolors.ENDC))
 	args.append(raw_input(bcolors.OKBLUE + "Sampling rate [0.1-1.0]: "+ bcolors.ENDC))
@@ -45,7 +45,7 @@ def main():
 
 	args.append(hidden_layers)
 	args.append(raw_input(bcolors.OKBLUE + "Maximum number of neurons per layer [2-64]: "+ bcolors.ENDC))
-	print "---------------------------------------------------------"
+	print("---------------------------------------------------------")
 	
 	data_file = open(sys.argv[1] +'.json', 'w')
 	#quotation marks around ints? decide after running everything

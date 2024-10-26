@@ -19,7 +19,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 def printUsage():
-    print "python parrotConv.py <bench name>"
+    print("python parrotConv.py <bench name>")
     exit(1)
 
 def findFileName(filename):
@@ -44,12 +44,12 @@ def parseParrotArgs(args):
 
         parrotArgs = []
         for a in args:
-            #print '-'*32
-            #print a
+            #print('-'*32)
+            #print(a)
             m = re.match('^\s*(\[(.+)\])?\s*(<(.+);(.+)>)?\s*(.+)$', a)
 
             features = [m.group(6), m.group(2), m.group(4), m.group(5)]
-            #print features
+            #print(features)
             for i in range(len(features)):
                 if ((features[i] == None) and (i != 1)):
                     features[i] = '0'
@@ -63,7 +63,7 @@ def parseParrotArgs(args):
             pass
 
             parrotArgs.append((features[0], features[1], (features[2], features[3])))
-            #print parrotArgs[-1]
+            #print(parrotArgs[-1])
         pass
     
         return parrotArgs
@@ -151,7 +151,7 @@ def main():
 
                     # copy data from varName to ParrotIn
                     if(type(varLen) != type(None)): # scalar variable
-                        #print varLen
+                        #print(varLen)
                         for j in range(int(varLen)):
                             fileStr += "\t%s[%d] = parrotOut[%d];\n" % (varName, j, j)
                     else: #single variable 

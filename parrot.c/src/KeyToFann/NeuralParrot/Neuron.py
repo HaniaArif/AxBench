@@ -65,11 +65,11 @@ class Neuron(object):
         delta = sum(self.deltaIn)
         delta = self.df * delta
 
-#        print '$'*64
-#        print 'deltaIn', self.deltaIn
-#        print 'w', self.w
-#        print 'x', self.x
-#        print 'y', self.y
+#        print('$'*64)
+#        print('deltaIn', self.deltaIn)
+#        print('w', self.w)
+#        print('x', self.x)
+#        print('y', self.y)
         
         for i in range(len(self.w)):
             self.w[i] = self.w[i] + eta * delta * (d * self.x[i])
@@ -119,22 +119,22 @@ if __name__ == '__main__':
             n.backProp(eta, 1)
         pass
     
-        print k, err
+        print(k, err)
     pass
     
     
-    print n
+    print(n)
     
     for i in range(len(x)):
-        print x[i], y[i], n.compute(x[i])
+        print(x[i], y[i], n.compute(x[i]))
     
-    print '^'*64
+    print('^'*64)
     s = str(n)
-    print s
+    print(s)
     n.__init__(0)
     n.fromStr(s)
     
     for i in range(len(x)):
-        print x[i], y[i], n.compute(x[i])
+        print(x[i], y[i], n.compute(x[i]))
     exit(0)    
 pass

@@ -30,7 +30,7 @@ class bcolors:
 
 
 def printUsage():
-	print "python dataConv.py <folder name>"
+	print("python dataConv.py <folder name>")
 	exit(1)
 
 def main():
@@ -66,12 +66,12 @@ def main():
 			while x < fileSize:
 				size = struct.unpack('i', inf.read(4))[0]
 				x += 4
-				#print "{} {}".format('Function Name Size:',size) #size of the function name
+				#print("{} {}".format('Function Name Size:',size) #size of the function name)
 				name = inf.read(size)
-				#print "{} {}".format('Function Name:', name) #name of the function
+				#print("{} {}".format('Function Name:', name) #name of the function)
 				x += size
 				io = struct.unpack('b', inf.read(1))[0]
-				#print "{} {}".format('Input or Output:',io) #input or output
+				#print("{} {}".format('Input or Output:',io) #input or output)
 				x += 1
 
 				# update the lenghth of inputs and outputs
@@ -79,7 +79,7 @@ def main():
 				x += 4
 
 				type = struct.unpack('b', inf.read(1))[0]
-				#print "{} {}".format('Type:',type) #type (boolean, int, etc.) decide next read size based on that
+				#print("{} {}".format('Type:',type) #type (boolean, int, etc.) decide next read size based on that)
 				x += 1
 
 				if(io == 0):
@@ -87,19 +87,19 @@ def main():
 					for in_size in range(n_inputs):
 						if type == 0:
 							value = struct.unpack('?', inf.read(1))[0]
-							#print "{} {}".format('Value:',value)
+							#print("{} {}".format('Value:',value))
 						elif type == 1:
 							value = struct.unpack('c', inf.read(1))[0]
-							#print "{} {}".format('Value:',value)
+							#print("{} {}".format('Value:',value))
 						elif type == 2:
 							value = struct.unpack('i', inf.read(4))[0]
-							#print "{} {}".format('Value:',value)
+							#print("{} {}".format('Value:',value))
 						elif type == 3:
 							value = struct.unpack('I', inf.read(4))[0]
-							#print "{} {}".format('Value:',value)
+							#print("{} {}".format('Value:',value))
 						elif type == 4:
 							value = struct.unpack('d', inf.read(8))[0]
-							#print "{} {}".format('Value:',value) #value
+							#print("{} {}".format('Value:',value) #value)
 						x += typeDict.get(type)
 						input.append(value)
 					dataSize += 1
@@ -108,19 +108,19 @@ def main():
 					for in_size in range(n_outputs):
 						if type == 0:
 							value = struct.unpack('?', inf.read(1))[0]
-							#print "{} {}".format('Value:',value)
+							#print("{} {}".format('Value:',value))
 						elif type == 1:
 							value = struct.unpack('c', inf.read(1))[0]
-							#print "{} {}".format('Value:',value)
+							#print("{} {}".format('Value:',value))
 						elif type == 2:
 							value = struct.unpack('i', inf.read(4))[0]
-							#print "{} {}".format('Value:',value)
+							#print("{} {}".format('Value:',value))
 						elif type == 3:
 							value = struct.unpack('I', inf.read(4))[0]
-							#print "{} {}".format('Value:',value)
+							#print("{} {}".format('Value:',value))
 						elif type == 4:
 							value = struct.unpack('d', inf.read(8))[0]
-							#print "{} {}".format('Value:',value) #value
+							#print("{} {}".format('Value:',value) #value)
 						x += typeDict.get(type)
 						output.append(value)
 				rangeA = struct.unpack('d', inf.read(8))[0]
@@ -136,9 +136,9 @@ def main():
 			cfg.write("0") # linear activation function
 				
 	with open(output_data, 'w') as outf:
-		print "---------------------------------------------------------",
-		print bcolors.UNDERLINE + "\n# Total number of training data: %d" % (dataSize) + bcolors.ENDC
-		print "---------------------------------------------------------"
+		print("---------------------------------------------------------",)
+		print(bcolors.UNDERLINE + "\n# Total number of training data: %d" % (dataSize) + bcolors.ENDC)
+		print("---------------------------------------------------------")
 		outf.write("{} {} {}".format(dataSize, n_inputs, n_outputs) + '\n')
 		for x in range(0, dataSize):
 			currInput = ""

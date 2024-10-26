@@ -31,14 +31,14 @@ class ParrotGenerator(object):
     pass
 
     def cpuCodeGen(self):
-        print self.targetConfig.get('vectorizationMode')
+        print(self.targetConfig.get('vectorizationMode'))
 
         w = self.targetConfig.get('vectorWidth')
-        print 'vectorWidth', w
-        print '~'*64
+        print('vectorWidth', w)
+        print('~'*64)
 
         nNeurons = self.nn.nNeurons
-        print nNeurons
+        print(nNeurons)
         nMult = 0
         nAdd = 0
         nAct = 0
@@ -150,7 +150,7 @@ class ParrotGenerator(object):
     pass
 
     def avxHorizontolCodeGen(self):
-        print self.targetConfig.get('vectorizationMode')
+        print(self.targetConfig.get('vectorizationMode'))
 
         insts = self.code.insts
 
@@ -185,16 +185,16 @@ class ParrotGenerator(object):
             vInsts.extend(postInsts)
         pass
 
-#        print '\n'*4, '#'*64
+#        print('\n'*4, '#'*64)
 #        for i in vInsts:
-#            print i
+#            print(i)
 #        pass
 
         self.code.insts = vInsts
     pass
 
     def avxVerticalCodeGen(self):
-        print self.targetConfig.get('vectorizationMode')
+        print(self.targetConfig.get('vectorizationMode'))
     pass
 
     def npuCodeGen(self):
