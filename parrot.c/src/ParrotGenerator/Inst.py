@@ -154,7 +154,7 @@ class Inst(object):
 
     def cppAvx(self, dataType, tabs = 1):
         print(self)
-        #raw_input()
+        #input()
         s = '\t'*tabs
 
         if (self.fn == '='):
